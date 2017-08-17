@@ -1,0 +1,29 @@
+group 'Swed'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'application'
+
+sourceCompatibility = 1.7
+mainClassName = 'Main'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+jar {
+    manifest {
+        attributes 'Implementation-Version': version,
+                'Main-Class': 'com.competition.Main'
+    }
+}
+
+task execute(type:JavaExec) {
+    standardInput = System.in
+    main = 'com.competition.Main'
+    classpath = sourceSets.main.runtimeClasspath
+}
